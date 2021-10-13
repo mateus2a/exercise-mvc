@@ -1,8 +1,9 @@
-const Joke = require('../models/Joke');
+const jokeModel = require('../models/joke');
 
-module.exports = {
-  async listJokes(_req, res) {
-    const joke = await Joke;
-    res.json(joke);
-  },
-};
+async function listJokes(_req, res) {
+  const joke = await jokeModel.getJoke();
+  console.log(joke);
+  return res.render('jokeView', { joke });
+}
+
+module.exports = { listJokes };

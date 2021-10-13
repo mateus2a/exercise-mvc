@@ -1,18 +1,7 @@
 const axios = require('axios');
-
-const END_POINT =
+const URL =
   'https://sv443.net/jokeapi/v2/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist&type=single';
-
-const getJokes = () => {
-  return axios
-    .get(END_POINT)
-    .then((response) => {
-      console.log(response);
-    })
-    .then((data) => console.log(data.joke))
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
-module.exports = getJokes;
+async function getJoke() {
+  return (await axios(URL)).data.joke;
+}
+module.exports = { getJoke };

@@ -1,9 +1,11 @@
 const express = require('express');
-const Joke = require('./models/Joke');
-
 const app = express();
+const JokeController = require('./controllers/JokeController');
+
 app.set('view engine', 'ejs');
+
 app.set('views', './views');
 
-app.get('/', Joke);
-app.listen(3000);
+app.get('/', JokeController.listJokes);
+
+app.listen(3000, () => console.log('listen to the port 3000'));
